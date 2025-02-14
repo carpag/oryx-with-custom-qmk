@@ -5,6 +5,10 @@
 
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
+  ST_MACRO_0,
+  ST_MACRO_1,
+  ST_MACRO_2,
+  ST_MACRO_3,
 };
 
 
@@ -19,8 +23,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [1] = LAYOUT_voyager(
     KC_NO,          LALT(LSFT(KC_RIGHT)),LGUI(LSFT(KC_4)),LGUI(LCTL(LSFT(KC_4))),LGUI(KC_SPACE), KC_NO,                                          LGUI(LSFT(KC_J)),LCTL(KC_W),     KC_NO,          LALT(KC_D),     KC_NO,          KC_NO,          
-    KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LCTL(KC_C),     LCTL(KC_RBRC),                                  KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_NO,          KC_NO,          
-    KC_NO,          LALT(LGUI(KC_W)),KC_NO,          KC_TRANSPARENT, LALT(LGUI(KC_C)),LGUI(LSFT(KC_SLASH)),                                LGUI(LSFT(KC_SPACE)),LALT(KC_B),     KC_NO,          LALT(KC_F),     KC_NO,          KC_NO,          
+    KC_NO,          ST_MACRO_0,     ST_MACRO_1,     ST_MACRO_2,     LCTL(KC_C),     LCTL(KC_RBRC),                                  KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_NO,          KC_NO,          
+    KC_NO,          LALT(LGUI(KC_W)),KC_NO,          ST_MACRO_3,     LALT(LGUI(KC_C)),LGUI(LSFT(KC_SLASH)),                                LGUI(LSFT(KC_SPACE)),LALT(KC_B),     KC_NO,          LALT(KC_F),     KC_NO,          KC_NO,          
     KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_TRANSPARENT,                                 MO(3),          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
@@ -77,6 +81,26 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
+    case ST_MACRO_0:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_GRAVE) SS_DELAY(100) SS_TAP(X_GRAVE) SS_DELAY(100) SS_TAP(X_LEFT));
+    }
+    break;
+    case ST_MACRO_1:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_SLASH) SS_DELAY(100) SS_TAP(X_B) SS_DELAY(100) SS_TAP(X_L) SS_DELAY(100) SS_TAP(X_K));
+    }
+    break;
+    case ST_MACRO_2:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_SLASH) SS_DELAY(100) SS_TAP(X_LBRC) SS_DELAY(100) SS_TAP(X_LBRC));
+    }
+    break;
+    case ST_MACRO_3:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_SLASH) SS_DELAY(100) SS_TAP(X_G) SS_DELAY(100) SS_TAP(X_R) SS_DELAY(100) SS_TAP(X_P));
+    }
+    break;
 
     case RGB_SLD:
       if (record->event.pressed) {
