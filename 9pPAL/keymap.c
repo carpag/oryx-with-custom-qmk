@@ -104,7 +104,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     case RGB_SLD:
       if (record->event.pressed) {
-        rgblight_mode(1);
+        rgblight_mode(0);
       }
       return false;
   }
