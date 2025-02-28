@@ -8,7 +8,7 @@
 #define NO_AUTO_SHIFT_TAB
 #define NO_AUTO_SHIFT_SPECIAL
 #define NO_AUTO_SHIFT_ALPHA
-#define SERIAL_NUMBER "9pPAL/dPP6ax"
+#define SERIAL_NUMBER "9pPAL/Wvv0Pn"
 #define LAYER_STATE_8BIT
 #define COMBO_COUNT 1
 
